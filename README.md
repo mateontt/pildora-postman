@@ -30,7 +30,7 @@ El entorno de pruebas está basado en la popular **PetStore** que estará montad
 
 Se puede utilizar tanto **[Docker Desktop]** como **[Rancher]**.
 
-<br><br>
+<br>
 
 ### Crear contenedores
 
@@ -59,11 +59,12 @@ Una vez creados los contenedores podremos comprobar que se han creado con éxito
 
 <img src="./resources/swagger_homepage.png" align="center">
 
-<br><br>
+<br>
 
 > **Nota**
 > Para que muestre el contenido del Swagger hay que indicar el puerto correctamente en la caja superior, en caso contrario irá a buscar la url al puerto 80 en lugar del 88
 
+<br>
 
 # Postman
 
