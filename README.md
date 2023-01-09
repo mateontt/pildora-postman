@@ -173,7 +173,8 @@ Si ahora ejecutamos esa requests fallará debido a que la variable no tiene asig
 
 
 ## Exportar
-
+<img src="https://img.shields.io/badge/-Pendiente-red" alt="Postman">
+<br><br>
 
 
 # <img src="./resources/newman_mini.png" align="center" width=50> Newman
