@@ -141,36 +141,8 @@ Para ello hay que seleccionar el fichero CSV en la pantalla de configuración de
 #### Ejemplo de uso:
 Para automatizar el envío de una serie de request muy similares en las que únicamente cambia una parte de la URL y el valor a asignar se ha optado por utilizar un fichero CSV.
 
-La URL a consultar es ```http://httpstat.us/VALOR``` donde ```VALOR``` es lo que obtendremos del fichero CSV. El contenido de dicho fichero será el siguiente:
-```csv
-VALOR
-200
-204
-400
-403
-404
-```
-Ahora habrá que crear la colección y la request para la prueba.
-Como hay que utilizar el contenido del fichero CSV en la URL de la request, habrá que leer dicho valor previamente utilizando un **Pre-request Script**, que son scripts que se lanzan antes de cada request.
-En esta sección crearemos un script que asigne el valor del CSV a una variable de colección y que podrá ser utilizada por todo lo que contiene.
-
-Para crear esa variable, dentro de la colección hay una pestaña llamada **Variables**, en ella definiremos nuestra variable y grabamos
-<img src="./resources/collection_variable.png" align="center" border="1">
-En la pestaña **Pre-request Script** escribiremos un pequeño script que asignará el valor de la columna del CSV a la variable
-```javascript
-pm.collectionVariables.set("miValor", "data.VALOR");
-```
-> Este código lo ofrece diréctamente Postman como snippet
-
-<img src="./resources/collection_prerequest.png" align="center" border="1">
-
-Ahora hay que crear una request dentro de la colección y usaremos la variable creada en la URL y en el test de validación. Excepto para los tests, si se quiere utilizar una variable habrá que invocarla usando su nombre entre llaves ```{{nombre_variable}}```
-
-<img src="./resources/csv_request.png" align="center" border="1">
-
-Si ahora ejecutamos esa requests fallará debido a que la variable no tiene asignado ningún valor, si le asignamos un valor a mano (por ejemplo 200) y lanzamos la request, veremos como se ejecuta y valida correctamente.
-
-
+<img src="https://img.shields.io/badge/-Pendiente-red" alt="Postman">
+<br><br>
 
 ## Exportar
 <img src="https://img.shields.io/badge/-Pendiente-red" alt="Postman">
@@ -181,19 +153,19 @@ Si ahora ejecutamos esa requests fallará debido a que la variable no tiene asig
 
 ## Instalación
 Ejecutar el comando nodeJS ```npm install -g newman```
+Más información en https://learning.postman.com/docs/running-collections/using-newman-cli/installing-running-newman/
 
 ## Ejecutar colecciones
 Lanzar comando ```newman run .\PetStore_Newman.postman_collection.json -e '.\Puerto_8x.postman_environment.json'```
-<img src="./resources/newman_runok.png" align="center" border="1">
 
+<img src="./resources/newman_runok.png" align="center" border="1">
 
 Para iteraciones con CSV ``` newman run .\PetStore_Newman_CSV.postman_collection.json -e '.\Puerto_8x.postman_environment.json' -d .\datos.csv```
 
 <img src="./resources/newman_csv_runok.png" align="center" border="1">
 
 
-## Link
-* https://learning.postman.com/docs/running-collections/using-newman-cli/installing-running-newman/
+
 
 
 
