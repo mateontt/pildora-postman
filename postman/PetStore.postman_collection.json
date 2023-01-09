@@ -1,0 +1,223 @@
+{
+	"info": {
+		"_postman_id": "f914e67e-4ee4-45c3-9d20-8f28e65a2944",
+		"name": "PetStore",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "19356365"
+	},
+	"item": [
+		{
+			"name": "pet",
+			"item": [
+				{
+					"name": "/pet/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": 500,\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"Goofy\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/pet/{id}",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Obtener Json\r",
+									"var jsonData = pm.response.json();\r",
+									"\r",
+									"/*\r",
+									"pm.test(\"Comprobar nombre mascota\", function () {\r",
+									"    pm.expect(jsonData.name).to.eql(\"Goofy\");\r",
+									"});\r",
+									"*/\r",
+									"\r",
+									"pm.test(\"Comprobar ID mascota\", function () {\r",
+									"    pm.expect(jsonData.id).to.eql(1000);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v2/pet/1000",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"1000"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Runner CSV",
+			"item": [
+				{
+					"name": "/pet/ - CSV",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Obtener variables de coleccion\r",
+									"var petId = pm.collectionVariables.get(\"petID\")\r",
+									"var petName = pm.collectionVariables.get(\"petNAME\")\r",
+									"\r",
+									"// Validaciones\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate pet name is \" + petName, function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(petName);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate pet id is \" + petId, function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(parseInt(petId));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"id\": {{petID}},\r\n  \"category\": {\r\n    \"id\": 0,\r\n    \"name\": \"string\"\r\n  },\r\n  \"name\": \"{{petNAME}}\",\r\n  \"photoUrls\": [\r\n    \"string\"\r\n  ],\r\n  \"tags\": [\r\n    {\r\n      \"id\": 0,\r\n      \"name\": \"string\"\r\n    }\r\n  ],\r\n  \"status\": \"available\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{baseUrl}}/v2/pet",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"pet"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "/pet/{id} - CSV",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"// Obtener variables de coleccion\r",
+									"var petId = pm.collectionVariables.get(\"petID\")\r",
+									"var petName = pm.collectionVariables.get(\"petNAME\")\r",
+									"\r",
+									"// Validaciones\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate pet name is \" + petName, function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.name).to.eql(petName);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Validate pet id is \" + petId, function () {\r",
+									"    var jsonData = pm.response.json();\r",
+									"    pm.expect(jsonData.id).to.eql(parseInt(petId));\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseUrl}}/v2/pet/{{petID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"{{petID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"/*pm.collectionVariables.set(\"petID\", data.ID);",
+					"pm.collectionVariables.set(\"petNAME\", data.NAME);*/"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "petNAME",
+			"value": "Laika",
+			"type": "string"
+		},
+		{
+			"key": "petID",
+			"value": "900",
+			"type": "string"
+		}
+	]
+}
