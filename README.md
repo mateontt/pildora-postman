@@ -20,7 +20,7 @@
 
 # Propósito
 
-El propósito de la píldora es el de intentar establecer una base para poder utilizar eficázmente Postman y Newman de forma conjunta o separada.
+El propósito de la píldora es el de intentar establecer una base para poder utilizar Postman y Newman.
 
 # Entorno
 
