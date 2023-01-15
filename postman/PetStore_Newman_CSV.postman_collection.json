@@ -115,8 +115,8 @@
 			"script": {
 				"type": "text/javascript",
 				"exec": [
-					"/*pm.collectionVariables.set(\"petID\", data.ID);",
-					"pm.collectionVariables.set(\"petNAME\", data.NAME);*/"
+					"pm.collectionVariables.set(\"petID\", data.ID);",
+					"pm.collectionVariables.set(\"petNAME\", data.NAME);"
 				]
 			}
 		},

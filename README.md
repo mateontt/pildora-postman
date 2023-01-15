@@ -127,7 +127,6 @@ Para ello abrimos la colección o carpeta y seleccionamos Run Collection o Run f
 
 <img src="./resources/runner_collection.png" align="center" border="1">
 
-
 <img src="./resources/runner_folder.png" align="center" border="1">
 
 Pantalla de runner donde podremos alterar el orden de las request, cuales deben ser ejecutadas, el número de iteraciones, delay, fichero de datos, etc...
@@ -141,12 +140,40 @@ Para ello hay que seleccionar el fichero CSV en la pantalla de configuración de
 #### Ejemplo de uso:
 Para automatizar el envío de una serie de request muy similares en las que únicamente cambia una parte de la URL y el valor a asignar se ha optado por utilizar un fichero CSV.
 
-<img src="https://img.shields.io/badge/-Pendiente-red" alt="Postman">
-<br><br>
+Supongamos que tenemos el siguiente fichero CSV que contiene un ID y un nombre para la mascota:
+```csv
+ID,NAME
+1000,SNOOPY
+1001,LAIKA
+1002,BEETHOVEN
+1003,RANTAMPLAN
+```
+
+Sabiendo los campos que vamos a utilizar hay que definir una serie de variables en la Colección que almacenará el contenido del CSV para cada iteración en la pestaña **Variables**. La asignacion *columna <> dato* será con **data.NOMBRE_COLUMNA**.
+De esta forma crearemos una variable llamada **petNAME** y **petID** que tendrán los valores **data.NAME** y **data.ID** respectivamente:
+
+<img src="./resources/csv_variable.png" align="center" border="1">
+
+De esta forma en cada iteración del runner asignará los valores de la línea que corresponda a esas variables para posteriormente poder utilizarlas en las request ya sea en la URL, payload, tests, etc...
+
+<img src="./resources/csv_payload.png" align="center" border="1">
+
+
+Para cargar el fichero tenemos que abrir el runner de la Colección o Carpeta y seleccionar el fichero CSV en **Data > Select File**, en el combobox **Data File Type** hay que seleccionar ***text/csv***.
+
+<img src="./resources/csv_selectfile.png" align="center" border="1">
+
+En el apartado **Iterations** hay que especificar hasta qué línea del CSV queremos llegar sin contar con la primera línea que son los nombres de los campos. De forma que si tenemos un CSV de 4 registros tendremos que poner un valor de 4 para que recorra el CSV completo
+
+Una vez que tengamos todo preparado, lanzamos el Runner y veremos como va iterando por los distintos valores del CSV en el reporte.
 
 ## Exportar
-<img src="https://img.shields.io/badge/-Pendiente-red" alt="Postman">
-<br><br>
+### Colección
+Para exportar una colección hay que pulsar en los tres puntos que aparecen cuando ponemos el cursor encima y luego pulsar en **Export**
+<img src="./resources/export_collection.png" align="center" border="1">
+Elegiremos la versión de Postman en la que lo queremos exportar (normalmente **Collection 2.1**) y el nombre y ruta donde la guardaremos. Esto generará un fichero Json que podremos compartir e importar en otro Postman.
+Exportar una colección incluirá todas las carpetas y request que tenga dentro
+
 
 
 # <img src="./resources/newman_mini.png" align="center" width=50> Newman
